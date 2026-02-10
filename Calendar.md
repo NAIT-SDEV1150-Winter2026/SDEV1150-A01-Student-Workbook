@@ -12,7 +12,7 @@ This draft planning calendar shows the dates for all **evaluation items**. Offic
 | Week 3  |  Jan 18 - 24   |                    |                               |
 | Week 4  |  Jan 25 - 31   |                    | Out: Assignment 1, Jan 28     |
 | Week 5  |   Feb 1 - 7    | Quiz 1, **Feb 4**  |                               |
-| Week 6  |   Feb 8 - 14   |                    | Due: Assignment 1, **Feb 11** |
+| Week 6  |   Feb 8 - 14   |                    | Due: Assignment 1, **Feb 13** |
 | *BREAK* |  Feb 15 - 21   |                    | Out: Assignment 2, Feb 18     |
 | Week 7  |  Feb 22 - 28   |                    |                               |
 | Week 8  |   Mar 1 - 7    | Quiz 2, **Mar 4**  |                               |
