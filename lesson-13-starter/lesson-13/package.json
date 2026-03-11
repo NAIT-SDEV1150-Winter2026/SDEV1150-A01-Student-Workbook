@@ -1,0 +1,19 @@
+{
+  "name": "lesson-13",
+  "version": "1.0.0",
+  "description": "Lesson 13 - Intro to Package Management",
+  "license": "ISC",
+  "author": "Bryan Mendoza",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "dayjs": "^1.11.19"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}
