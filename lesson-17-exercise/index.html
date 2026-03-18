@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 17 - TODO List Exercise</title>
+  <script type="module" src="/src/main.js"></script>
+</head>
+
+<body>
+  <!-- Your markup here -->
+   <h1>TODOs</h1>
+
+    <!-- Add Form -->
+    <form id="todo-form">
+      <label>
+        New Todo
+        <input id="todo-input" name="text" type="text" placeholder="What needs to be done?" />
+      </label>
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- List -->
+    <ul id="todo-list" aria-live="polite"></ul>
+</body>
+
+</html>
