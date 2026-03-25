@@ -23,4 +23,19 @@ anotherUserCard.appendChild(nameSpan);
 anotherUserCard.appendChild(descSpan);
 
 document.querySelector('main').appendChild(anotherUserCard);
+
+
+
+
+const toggleBtn = document.createElement("button");
+toggleBtn.textContent = "Toggle";
+document.body.prepend(toggleBtn);//prepend adds to the start of the document
+let dark = false;
+toggleBtn.addEventListener('click',()=>{
+  dark = !dark;
+  document.documentElement.style.setProperty('--global-card-bg', dark ? '#1f2937': '#ffffff');
+  document.documentElement.style.setProperty('--global-card-color', dark ? '#e5e7eb' : '#222222');
+  document.documentElement.style.setProperty('--global-card-accent', dark ? 'gold' : '#0077ff');
+
+});
 // Why doesn't the custom avatar show up for this element?
