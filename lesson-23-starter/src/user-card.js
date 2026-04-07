@@ -106,8 +106,8 @@ class UserCard extends HTMLElement {
   }
 
   _setFollow(value) {
-    this._followed = value;
-    this._btn.textContent = this._followed ? 'Following' : 'Follow';
+    this.#followed = value;
+    this._btn.textContent = this.#followed ? 'Following' : 'Follow';
     this.dispatchEvent(new CustomEvent('follow-change', {
       detail: { id: this.getAttribute('user-id') || null, followed: this.#followed },
       bubbles: true,
@@ -127,6 +127,19 @@ class UserCard extends HTMLElement {
   // runs when an element is addded to the dom
   connectedCallback(){
     this._btn.addEventListener('click', this._onButtonClick);
+    if (this.#user) {
+      this._renderFromUser();
+    }
+    else {
+      const avatar = this.getAttribute('avatar');
+      if (avatar) {
+        this._img.src = avatar;
+      }
+      else {
+         this._img.src = 'https://placehold.co/80x80/0077ff/ffffff';
+      }
+    }
+
     
   }
   disconnectedCallback(){
