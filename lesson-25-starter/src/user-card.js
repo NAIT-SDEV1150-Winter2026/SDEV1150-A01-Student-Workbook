@@ -56,12 +56,12 @@ document.body.appendChild(template);
 class UserCard extends HTMLElement {
   #followed = false;
   #user = null;
+
   constructor() {
     super();
-
-    // Added property to track follow state
     this.#followed = false;
     this.#user = null;
+    // Bind the button handler to the custom element
     this._onButtonClick = this._onButtonClick.bind(this);
 
     const shadow = this.attachShadow({ mode: 'open' });
@@ -70,25 +70,58 @@ class UserCard extends HTMLElement {
     this._btn = content.querySelector('button');
     shadow.appendChild(content);
   }
-  _renderFromUser(){
-    if (this.#user){
-      if (this.#user.avatar){
-        this._img.src =this.#user.avatar;
-      }
-      else {
+
+  _renderFromUser() {
+    if (this.#user) {
+      if (this.#user.avatar) {
+        this._img.src = this.#user.avatar;
+      } else {
         this._img.src = 'https://placehold.co/80x80/0077ff/ffffff';
       }
+
       this.setAttribute('user-id', this.#user.id || '');
       const nameSlot = this.shadowRoot.querySelector('[name="name"]');
-      if (nameSlot){
+      if (nameSlot) {
         nameSlot.textContent = this.#user.name || '';
       }
-      const descSlot = this.shadowRoot.querySelector('[name="description"]');
-      if (descSlot){
-         descSlot.textContent = this.#user.description || '';
-      }
 
+      const descSlot = this.shadowRoot.querySelector('[name="descriptions"]');
+      if (descSlot) {
+        descSlot.textContent = this.#user.description || '';
+      }
     }
+  }
+
+  set user(obj) {
+    this.#user = obj;
+    this._renderFromUser();
+  }
+
+  get user() {
+    return this.#user;
+  }
+
+  _onButtonClick() {
+    this._setFollow(!this.#followed);
+  }
+
+  connectedCallback() {
+    this._btn.addEventListener('click', this._onButtonClick);
+
+    if (this.#user) {
+      this._renderFromUser();
+    } else {
+      const avatar = this.getAttribute('avatar');
+      if (avatar) {
+        this._img.src = avatar;
+      } else {
+        this._img.src = 'https://placehold.co/80x80/0077ff/ffffff';
+      }
+    }
+  }
+
+  disconnectedCallback() {
+    this._btn.removeEventListener('click', this._onButtonClick);
   }
 
   follow() {
@@ -98,39 +131,19 @@ class UserCard extends HTMLElement {
   unfollow() {
     this._setFollow(false);
   }
-  
 
-  // Property to read followed state
   get followed() {
     return this.#followed;
   }
 
   _setFollow(value) {
-    this._followed = value;
-    this._btn.textContent = this._followed ? 'Following' : 'Follow';
+    this.#followed = value;
+    this._btn.textContent = this.#followed ? 'Following' : 'Follow';
     this.dispatchEvent(new CustomEvent('follow-change', {
-      detail: { id: this.getAttribute('user-id') || null, followed: this.#followed },
+      detail: { id: this.getAttribute('user-id') || null, followed: this.followed },
       bubbles: true,
       composed: true,
     }));
-  }
-  _onButtonClick() {
-    this._setFollow(!this.#followed);
-  }
-  get user() {
-    return this.#user;
-  }
-  set user(obj) {
-    this.#user = obj;
-    this._renderFromUser();
-  }
-  // runs when an element is addded to the dom
-  connectedCallback(){
-    this._btn.addEventListener('click', this._onButtonClick);
-    
-  }
-  disconnectedCallback(){
-     this._btn.removeEventListener('click', this._onButtonClick);
   }
 
   // Respond to attribute changes if needed in the future
@@ -139,7 +152,8 @@ class UserCard extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'avatar' && this.shadowRoot) {
+    if (name === 'avatars' && this.shadowRoot) {
+      console.log('Attribute changed:', name, oldValue, newValue);
       const img = this.shadowRoot.querySelector('img');
       if (img) {
         img.src = newValue;

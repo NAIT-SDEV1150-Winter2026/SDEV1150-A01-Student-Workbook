@@ -11,3 +11,9 @@ toggleBtn.addEventListener('click', () => {
   document.documentElement.style.setProperty('--global-card-accent', dark ? 'gold' : '#0077ff');
   toggleBtn.textContent = dark ? '☀️' : '🌙';
 });
+//Create an array of user objects
+const users = [
+  { id: 'u1', name: 'Zelda', avatar: 'assets/zelda-avatar.png', description: 'Princess of Hyrule' },
+  { id: 'u2', name: 'Link', avatar: 'assets/link-avatar.png', description: 'Hero of Hyrule' },
+  { id: 'u3', name: 'Mipha', description: 'Zora Champion' },
+];
