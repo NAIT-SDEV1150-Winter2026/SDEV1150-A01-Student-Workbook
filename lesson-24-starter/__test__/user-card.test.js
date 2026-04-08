@@ -2,7 +2,7 @@ import {expect, test, describe, beforeEach, afterEach} from 'vitest';
 import '../src/user-card.js';
 let element ;
 beforeEach(()=>{
-    const element = document.createElement('user-card');
+    element = document.createElement('user-card');
 });
 afterEach(()=>{
     element.remove();
