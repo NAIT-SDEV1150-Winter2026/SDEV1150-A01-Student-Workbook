@@ -23,6 +23,7 @@ let followedCount = 0;
 
 // Listen on the container (event bubbles out of shadow)
 main.addEventListener('follow-change', (e) => {
+  console.log(e);
   // Add one or subtract one based on follow state
   followedCount += e.detail.followed ? 1 : -1;
   // Or, use Array filter for accurate count
@@ -45,3 +46,4 @@ toggleBtn.addEventListener('click', () => {
   document.documentElement.style.setProperty('--global-card-accent', dark ? 'gold' : '#0077ff');
   toggleBtn.textContent = dark ? '☀️' : '🌙';
 });
+console.log(e);

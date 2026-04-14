@@ -20,6 +20,15 @@
       "author": "Ganondorf",
       "year": 2021,
       "genre": "Epic"
+    },
+    {
+      "id": "5a71",
+      "title": "bshdb",
+      "author": "ssd",
+      "year": 32432,
+      "genre": "Epic",
+      "bookid": ""
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
